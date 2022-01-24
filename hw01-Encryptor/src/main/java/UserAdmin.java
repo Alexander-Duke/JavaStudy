@@ -1,5 +1,3 @@
-package com.company.Encryptor;
-
 public class UserAdmin extends User {
     private boolean permissions;
 

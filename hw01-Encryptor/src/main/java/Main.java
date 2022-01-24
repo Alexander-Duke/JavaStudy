@@ -1,5 +1,3 @@
-package com.company.Encryptor;
-
 public class Main {
     public static void main(String[] args) {
         User user01 = new UserAdmin("admin1", "987654321");

@@ -1,5 +1,3 @@
-package com.company.Encryptor;
-
 public class Decrypt {
     private static Decrypt instance;
 
