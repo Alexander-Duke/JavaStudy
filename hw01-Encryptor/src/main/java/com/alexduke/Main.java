@@ -1,7 +1,9 @@
-import algorithm.Decrypt;
-import algorithm.Encryptor;
-import users.User;
-import users.UserAdmin;
+package com.alexduke;
+
+import com.alexduke.decoding.Decrypt;
+import com.alexduke.encryption.Encryptor;
+import com.alexduke.users.User;
+import com.alexduke.users.UserAdmin;
 
 public class Main {
     public static void main(String[] args) {

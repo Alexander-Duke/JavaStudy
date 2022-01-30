@@ -1,4 +1,4 @@
-package algorithm;
+package com.alexduke.decoding;
 
 public class Decrypt {
     private static Decrypt instance;

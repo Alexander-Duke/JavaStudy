@@ -1,4 +1,4 @@
-package users;
+package com.alexduke.users;
 
 public class User {
     protected String userName;

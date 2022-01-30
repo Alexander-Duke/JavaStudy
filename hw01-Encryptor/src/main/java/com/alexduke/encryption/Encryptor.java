@@ -1,4 +1,4 @@
-package algorithm;
+package com.alexduke.encryption;
 
 public class Encryptor {
     private static Encryptor instance;
