@@ -1,3 +1,5 @@
+package algorithm;
+
 public class Decrypt {
     private static Decrypt instance;
 

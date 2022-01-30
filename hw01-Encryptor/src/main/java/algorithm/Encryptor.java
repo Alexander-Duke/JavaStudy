@@ -1,3 +1,5 @@
+package algorithm;
+
 public class Encryptor {
     private static Encryptor instance;
 
