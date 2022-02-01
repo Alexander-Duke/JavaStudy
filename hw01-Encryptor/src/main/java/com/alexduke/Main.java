@@ -5,6 +5,7 @@ import com.alexduke.encryption.Encryptor;
 import com.alexduke.users.User;
 import com.alexduke.users.UserAdmin;
 
+//Main
 public class Main {
     public static void main(String[] args) {
         User user01 = new UserAdmin("admin1", "987654321");
