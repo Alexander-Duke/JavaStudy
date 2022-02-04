@@ -14,6 +14,9 @@ public class Encryptor {
     }
 
     public String encryptPassword(String passwordOriginal) {
+        if (passwordOriginal.length() <= 4) {
+            throw new IllegalArgumentException("The minimum password length is 4 characters.");
+        }
         String[] arrayPasswordInAsciiEncrypted = encryptToArray(passwordOriginal);
         return arrayToString(arrayPasswordInAsciiEncrypted);
     }
