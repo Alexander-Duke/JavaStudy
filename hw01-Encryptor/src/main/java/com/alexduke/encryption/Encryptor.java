@@ -1,11 +1,9 @@
 package com.alexduke.encryption;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class Encryptor {
     private static Encryptor instance;
-    public final static String EXCEPTION_MESSAGE_LENGTH_PASSWORD = "The minimum password length is 4 characters.";
+    public static final String EXCEPTION_MESSAGE_LENGTH_PASSWORD = "The minimum password length is 4 characters.";
 
     private Encryptor() {
     }
