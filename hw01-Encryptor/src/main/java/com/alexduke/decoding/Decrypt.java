@@ -6,7 +6,7 @@ public class Decrypt {
     private Decrypt() {
     }
 
-    public static Decrypt getInstance() {
+    public static Decrypt getDecryptor() {
         if (instance == null) {
             instance = new Decrypt();
         }
@@ -40,8 +40,8 @@ public class Decrypt {
     }
 
     private String[] stringPasswordToArray(String encryptionPassword) {
-        int beginIndex = 0;
-        int endIndex = 4;
+        int beginIndex;
+        int endIndex;
         int arraySize = encryptionPassword.length() / 3;
         String[] arrayPassword = new String[arraySize];
 

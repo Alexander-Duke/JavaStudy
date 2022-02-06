@@ -13,21 +13,21 @@ class DecryptTest {
     private static Decrypt decrypt;
 
     @BeforeAll
-    public static void createEncryptor() {
-        decrypt = Decrypt.getInstance();
+    public static void init() {
+        decrypt = Decrypt.getDecryptor();
     }
 
     @Test
-    void decryptionPasswordShouldDecoded() {
-        String actual = "057058059060061062063064065";
-        String expected = "987654321";
-        String decryptionPassword = decrypt.decryptionPassword(actual);
-        assertEquals(expected, decryptionPassword);
+    void decryptionPassword_shouldDecodedEncryptedPassword() {
+        String encryptedPassword = "057058059060061062063064065";
+        String decryptedPassword = "987654321";
+        String decryptionPassword = decrypt.decryptionPassword(encryptedPassword);
+        assertEquals(decryptedPassword, decryptionPassword);
     }
 
     @Test
-    public void decryptShouldReturnFasterThan100milliseconds() {
-        String actual = "057058059060061062063064065";
-        assertTimeout(Duration.ofMillis(100), () -> decrypt.decryptionPassword(actual));
+    void decryptionPassword_ShouldReturnFasterThan100milliseconds() {
+        String EncryptedPassword = "057058059060061062063064065";
+        assertTimeout(Duration.ofMillis(100), () -> decrypt.decryptionPassword(EncryptedPassword));
     }
 }
