@@ -32,14 +32,14 @@ public class EncryptorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             encrypt.encryptPassword(originalShortPassword);
         });
-        var actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(EXCEPTION_MESSAGE_LENGTH_PASSWORD));
+        String thrownExceptionMessage = exception.getMessage();
+        assertEquals(EXCEPTION_MESSAGE_LENGTH_PASSWORD, thrownExceptionMessage);
     }
 
     @Test
-    void encryptPassword_ShouldReturnFast() {
-        var actual = "987654321987654321";
-        assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> encrypt.encryptPassword(actual));
+    void encryptPassword_ShouldReturnFasterDurationLimit() {
+        var randomPassword = "987654321987654321";
+        assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> encrypt.encryptPassword(randomPassword));
     }
 
 }

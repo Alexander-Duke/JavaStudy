@@ -17,7 +17,7 @@ public class Encryptor {
 
     public String encryptPassword(String passwordOriginal) {
         checkLengthPassword(passwordOriginal);
-        var arrayPasswordInAsciiEncrypted = encryptToArray(passwordOriginal);
+        String[] arrayPasswordInAsciiEncrypted = encryptToArray(passwordOriginal);
         return arrayToString(arrayPasswordInAsciiEncrypted);
     }
 
@@ -27,7 +27,7 @@ public class Encryptor {
 
         for (int i = 0; i < sizeArray; i++) {
             int asciiNum = passwordOriginal.charAt(i);
-            var encryptedAsciiNum = asciiNum + i * 2;
+            int encryptedAsciiNum = asciiNum + i * 2;
             var asciiToString = new StringBuilder("");
             asciiToString.append(encryptedAsciiNum);
             if (asciiToString.length() == 1) {
@@ -41,11 +41,11 @@ public class Encryptor {
     }
 
     private String arrayToString(String[] arrayPasswordInAsciiEncrypted) {
-        var pas = new StringBuilder("");
-        for (var s : arrayPasswordInAsciiEncrypted) {
-            pas.append(s);
+        var stringEncryptedPassword = new StringBuilder();
+        for (String s : arrayPasswordInAsciiEncrypted) {
+            stringEncryptedPassword.append(s);
         }
-        return pas.toString();
+        return stringEncryptedPassword.toString();
     }
 
     private void checkLengthPassword(String passwordOriginal) {
