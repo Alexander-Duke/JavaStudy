@@ -14,25 +14,25 @@ public class Decrypt {
     }
 
     public String decryptionPassword(String encryptionPassword) {
-        int[] arrayPasswordInAscii = encryptionPasswordToArray(encryptionPassword);
+        var arrayPasswordInAscii = encryptionPasswordToArray(encryptionPassword);
         return processingDecrypt(arrayPasswordInAscii);
     }
 
-    private String processingDecrypt(int[] array) {
-        StringBuilder depas = new StringBuilder("");
-        char[] array2 = new char[array.length];
-        for (int i = 0; i < array.length; i++) {
-            array2[i] = (char) (array[i] - i * 2);
+    private String processingDecrypt(int[] arrayInt) {
+        var depas = new StringBuilder("");
+        var array = new char[arrayInt.length];
+        for (int i = 0; i < arrayInt.length; i++) {
+            array[i] = (char) (arrayInt[i] - i * 2);
         }
-        for (char c : array2) {
+        for (var c : array) {
             depas.append(c);
         }
         return depas.toString();
     }
 
     private int[] encryptionPasswordToArray(String encryptionPassword) {
-        String[] arrayPassword = stringPasswordToArray(encryptionPassword);
-        int[] intArrayPassword = new int[arrayPassword.length];
+        var arrayPassword = stringPasswordToArray(encryptionPassword);
+        var intArrayPassword = new int[arrayPassword.length];
         for (int i = 0; i < arrayPassword.length; i++) {
             intArrayPassword[i] = Integer.parseInt(arrayPassword[i]);
         }
@@ -40,14 +40,12 @@ public class Decrypt {
     }
 
     private String[] stringPasswordToArray(String encryptionPassword) {
-        int beginIndex;
-        int endIndex;
         int arraySize = encryptionPassword.length() / 3;
-        String[] arrayPassword = new String[arraySize];
+        var arrayPassword = new String[arraySize];
 
         for (int i = 0; i < arrayPassword.length; i++) {
-            beginIndex = i * 3;
-            endIndex = 3 + i * 3;
+            var beginIndex = i * 3;
+            var endIndex = 3 + i * 3;
             arrayPassword[i] = encryptionPassword.substring(beginIndex, endIndex);
         }
         return arrayPassword;

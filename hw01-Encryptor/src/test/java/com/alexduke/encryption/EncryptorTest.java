@@ -20,25 +20,25 @@ public class EncryptorTest {
 
     @Test
     void encryptPassword_ShouldEncrypt() {
-        String originalPassword = "987654321";
-        String encryptedPassword = "057058059060061062063064065";
-        String passwordEncryptedByEncryptor = encrypt.encryptPassword(originalPassword);
+        var originalPassword = "987654321";
+        var encryptedPassword = "057058059060061062063064065";
+        var passwordEncryptedByEncryptor = encrypt.encryptPassword(originalPassword);
         assertEquals(encryptedPassword, passwordEncryptedByEncryptor);
     }
 
     @Test
     void encryptPassword_ShouldBeThrownAnExceptionIfPasswordShort() {
-        String originalShortPassword = "123";
+        var originalShortPassword = "123";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             encrypt.encryptPassword(originalShortPassword);
         });
-        String actualMessage = exception.getMessage();
+        var actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(EXCEPTION_MESSAGE_LENGTH_PASSWORD));
     }
 
     @Test
     void encryptPassword_ShouldReturnFast() {
-        String actual = "987654321987654321";
+        var actual = "987654321987654321";
         assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> encrypt.encryptPassword(actual));
     }
 

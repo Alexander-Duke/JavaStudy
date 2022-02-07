@@ -20,15 +20,15 @@ class DecryptTest {
 
     @Test
     void decryptionPassword_shouldDecodedEncryptedPassword() {
-        String encryptedPassword = "057058059060061062063064065";
-        String decryptedPassword = "987654321";
-        String decryptionPassword = decrypt.decryptionPassword(encryptedPassword);
+        var encryptedPassword = "057058059060061062063064065";
+        var decryptedPassword = "987654321";
+        var decryptionPassword = decrypt.decryptionPassword(encryptedPassword);
         assertEquals(decryptedPassword, decryptionPassword);
     }
 
     @Test
     void decryptionPassword_ShouldReturnFasterThan100milliseconds() {
-        String EncryptedPassword = "057058059060061062063064065";
+        var EncryptedPassword = "057058059060061062063064065";
         assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> decrypt.decryptionPassword(EncryptedPassword));
     }
 }
