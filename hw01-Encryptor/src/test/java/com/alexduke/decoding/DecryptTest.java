@@ -27,7 +27,7 @@ class DecryptTest {
     }
 
     @Test
-    void decryptionPassword_ShouldReturnFasterThan100milliseconds() {
+    void decryptionPassword_shouldReturnFasterThan100milliseconds() {
         var EncryptedPassword = "057058059060061062063064065";
         assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> decrypt.decryptionPassword(EncryptedPassword));
     }
