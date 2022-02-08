@@ -19,7 +19,7 @@ public class EncryptorTest {
     }
 
     @Test
-    void encryptPassword_ShouldEncrypt() {
+    void encryptPassword_shouldEncrypt() {
         var originalPassword = "987654321";
         var encryptedPassword = "057058059060061062063064065";
         var passwordEncryptedByEncryptor = encrypt.encryptPassword(originalPassword);
@@ -27,7 +27,7 @@ public class EncryptorTest {
     }
 
     @Test
-    void encryptPassword_ShouldBeThrownAnExceptionIfPasswordShort() {
+    void encryptPassword_shouldBeThrownAnExceptionIfPasswordShort() {
         var originalShortPassword = "123";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             encrypt.encryptPassword(originalShortPassword);
@@ -37,9 +37,8 @@ public class EncryptorTest {
     }
 
     @Test
-    void encryptPassword_ShouldReturnFasterDurationLimit() {
+    void encryptPassword_shouldCompleteBeforeGivenTimeout() {
         var randomPassword = "987654321987654321";
         assertTimeout(Duration.ofMillis(DURATION_LIMIT_IN_MILLISECONDS), () -> encrypt.encryptPassword(randomPassword));
     }
-
 }
