@@ -14,19 +14,19 @@ public class CalcTest {
 
     @Test
     void multiplication() {
-        System.out.println("Result multiplication: \n");
+        System.out.println("@Test Result multiplication: \n");
         calc.multiplication();
     }
 
     @Test
     void  addition() {
-        System.out.println("Result addition: \n");
+        System.out.println("@Test Result addition: \n");
         calc.addition();
     }
 
     @AfterEach
     void divide() {
-        System.out.println("Result division: \n");
+        System.out.println("@AfterEach Result division: \n");
         calc.division();
     }
 
