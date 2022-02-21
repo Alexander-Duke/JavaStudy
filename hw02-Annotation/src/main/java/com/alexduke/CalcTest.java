@@ -10,23 +10,24 @@ public class CalcTest {
     @BeforeEach
     static void init() {
         calc = new Calc(5,5);
+        System.out.println("\n@BeforeEach create object:");
     }
 
     @Test
     void multiplication() {
-        System.out.println("@Test Result multiplication: \n");
+        System.out.println("\n@Test Result multiplication:");
         calc.multiplication();
     }
 
     @Test
     void  addition() {
-        System.out.println("@Test Result addition: \n");
+        System.out.println("\n@Test Result addition:");
         calc.addition();
     }
 
     @AfterEach
     void divide() {
-        System.out.println("@AfterEach Result division: \n");
+        System.out.println("\n@AfterEach Result division:");
         calc.division();
     }
 

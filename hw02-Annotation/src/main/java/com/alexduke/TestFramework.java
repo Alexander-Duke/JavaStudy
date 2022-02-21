@@ -5,19 +5,25 @@ import com.alexduke.annotations.BeforeEach;
 import com.alexduke.annotations.Test;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TestFramework {
-    static void runTestTasks(String nameClass) throws Exception {
-        Class testClass = Class.forName(nameClass); //получили класс
-        System.out.println(testClass);
-        List<Method> methodTest = new ArrayList<>();
-        List<Method> methodAfterEach = new ArrayList<>();
-        List<Method> methodBeforeEach = new ArrayList<>();
+    static List<Method> methodTest = new ArrayList<>();
+    static List<Method> methodAfterEach = new ArrayList<>();
+    static List<Method> methodBeforeEach = new ArrayList<>();
 
+    static void runTestTasks(String nameClass) throws Exception {
+        Class testClass = Class.forName(nameClass);
+        System.out.println(testClass);
+        methodsByAnnotationToArraylist(testClass);
+        runMethods(testClass);
+    }
+
+    static void methodsByAnnotationToArraylist(Class testClass) throws NoSuchMethodException {
         Method[] methods = testClass.getDeclaredMethods();
         for (Method method : methods) {
             String methodName = method.getName();
@@ -34,11 +40,30 @@ public class TestFramework {
                 }
             }
         }
-        System.out.println("methodTest: " + methodTest);
-        System.out.println("methodBeforeEach: " + methodBeforeEach);
-        System.out.println("methodAfterEach: " + methodAfterEach);
-
     }
 
+    private static void runMethods(Class testClass) throws Exception {
+        Constructor<Object> constructor = testClass.getConstructor();
+        Object object = constructor.newInstance();
+        for (Method methodTest : methodTest) {
+            for (Method methodBeforeEach : methodBeforeEach) {
+                methodInvoke(testClass, object, methodBeforeEach);
+            }
+            methodInvoke(testClass, object, methodTest);
+            for (Method methodAfterEach : methodAfterEach) {
+                methodInvoke(testClass, object, methodAfterEach);
+            }
+        }
+    }
+
+    public static void methodInvoke(Class testClass, Object object, Method method) throws Exception {
+        String methodName = method.getName();
+        Method methodInvoke = testClass.getDeclaredMethod(methodName);
+        if (Modifier.isStatic(methodInvoke.getModifiers())) {
+            methodInvoke.invoke(methodInvoke);
+        } else {
+            methodInvoke.invoke(object);
+        }
+    }
 }
 
