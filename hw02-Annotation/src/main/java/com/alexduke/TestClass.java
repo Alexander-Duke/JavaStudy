@@ -25,18 +25,18 @@ public class TestClass {
         this.b = b;
     }
 
-    public void multiplication(int a, int b) {
-        int multiplication = a * b;
-        System.out.printf("%i * %i = %i",a,b,multiplication);
+    public void multiplication() {
+        int multiplication = getA() * getB();
+        System.out.printf("%s * %s = %s", getA(), getB(), multiplication);
     }
 
-    public void division(int a, int b) {
-        int division = a / b;
-        System.out.printf("%i / %i = %i",a,b,division);
+    public void division() {
+        int division = getA() / getB();
+        System.out.printf("%s / %s = %s", getA(), getB(), division);
     }
 
-    public void addition(int a, int b) {
-        int addition = a + b;
-        System.out.printf("%i + %i = %i",a,b,addition);
+    public void addition() {
+        int addition = getA() + getB();
+        System.out.printf("%s + %s = %s", getA(), getB(), addition);
     }
 }
