@@ -1,10 +1,12 @@
 package com.alexduke;
 
-public class TestClass {
+import com.alexduke.annotations.BeforeEach;
+
+public class Calc {
     private int a;
     private int b;
 
-    public TestClass(int a, int b) {
+    public Calc(int a, int b) {
         this.a = a;
         this.b = b;
     }
@@ -12,7 +14,6 @@ public class TestClass {
     public int getA() {
         return a;
     }
-
     public void setA(int a) {
         this.a = a;
     }
@@ -39,4 +40,5 @@ public class TestClass {
         int addition = getA() + getB();
         System.out.printf("%s + %s = %s", getA(), getB(), addition);
     }
+
 }
