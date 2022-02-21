@@ -16,14 +16,14 @@ public class TestFramework {
     static List<Method> methodAfterEach = new ArrayList<>();
     static List<Method> methodBeforeEach = new ArrayList<>();
 
-    static void runTestTasks(String nameClass) throws Exception {
+    public static void runTestTasks(String nameClass) throws Exception {
         Class testClass = Class.forName(nameClass);
         System.out.println(testClass);
         methodsByAnnotationToArraylist(testClass);
         runMethods(testClass);
     }
 
-    static void methodsByAnnotationToArraylist(Class testClass) throws NoSuchMethodException {
+    private static void methodsByAnnotationToArraylist(Class testClass) throws NoSuchMethodException {
         Method[] methods = testClass.getDeclaredMethods();
         for (Method method : methods) {
             String methodName = method.getName();
@@ -56,7 +56,7 @@ public class TestFramework {
         }
     }
 
-    public static void methodInvoke(Class testClass, Object object, Method method) throws Exception {
+    private static void methodInvoke(Class testClass, Object object, Method method) throws Exception {
         String methodName = method.getName();
         Method methodInvoke = testClass.getDeclaredMethod(methodName);
         if (Modifier.isStatic(methodInvoke.getModifiers())) {
